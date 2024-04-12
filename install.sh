@@ -6,12 +6,12 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     TMP_DIR=/tmp/dotfiles_tmp
-    LOCAL_BIN_DIR=~/test/.local
-    NVIM_CONFIG_DIR=~/test/.config
-    TMUX_CONFIG_DIR=~/test/.tmux.conf
+    LOCAL_BIN_DIR=~/.local
+    NVIM_CONFIG_DIR=~/.config
+    TMUX_CONFIG_DIR=~/.tmux.conf
     REQUIRED_PKG="fzf"
 
-    PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+    PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG | grep "install ok installed")
     echo "Checking if $REQUIRED_PKG is installed..."
 
     if [ "" = "$PKG_OK" ]; then

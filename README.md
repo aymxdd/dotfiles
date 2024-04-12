@@ -2,7 +2,7 @@
 
 This repository contains my personal config for nvim and tmux.
 
-## Installation
+## Installation (Linux only for now)
 
 To install the dotfiles, run the following command:
 
