@@ -15,6 +15,8 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "stevearc/oil.nvim",
+    "nvim-lua/plenary.nvim",
+    "nvim-pack/nvim-spectre",
     -- completion
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",

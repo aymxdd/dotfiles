@@ -1,17 +1,3 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.clipboard = "unnamedplus"
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.undofile = true
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
-
-vim.opt.runtimepath:append("~/.local/share/nvim/lazy/nvim-treesitter/parser")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -23,8 +9,8 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-vim.opt.rtp:prepend(lazypath)
 
+vim.opt.rtp:prepend(lazypath)
 
 require("core.options")
 require("core.keymaps")

@@ -1,4 +1,6 @@
-require 'nvim-treesitter.configs'.setup {
+vim.opt.runtimepath:append("~/.local/share/nvim/lazy/nvim-treesitter/parser")
+
+require('nvim-treesitter.configs').setup {
     -- A list of parser names, or "all"
     ensure_installed = "all",
 
@@ -12,6 +14,6 @@ require 'nvim-treesitter.configs'.setup {
         enable = true,
     },
     indent = {
-        enable = true,
+        enable = false,
     },
 }
