@@ -1,9 +1,23 @@
 #!/bin/bash
 
+pathList=(
+   ~/projects
+   ~/projects/lab
+   ~/projects/archive
+   ~/projects/utils
+   ~/projects/perso
+)
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/projects ~/projects/utils ~/projects/perso -mindepth 1 -maxdepth 1 -type d | fzf)
+    computedPathList=()
+
+    for path in "${pathList[@]}"; do
+        computedPathList+=($(find $path -mindepth 1 -maxdepth 1 -type d))
+    done
+
+    selected=$(printf '%s\n' "${computedPathList[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -20,6 +34,8 @@ fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
+    tmux send-keys -t $selected_name "nvim ." C-m
+    tmux split-window -h -t $selected_name -c $selected
 fi
 
 tmux switch-client -t $selected_name
