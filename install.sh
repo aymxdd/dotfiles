@@ -8,7 +8,7 @@ then
     TMP_DIR=/tmp/dotfiles_tmp
     LOCAL_BIN_DIR=~/.local
     NVIM_CONFIG_DIR=~/.config
-    TMUX_CONFIG_DIR=~/.tmux.conf
+    TMUX_CONFIG_PATH=~/.tmux.conf
     REQUIRED_PKG="fzf"
 
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG | grep "install ok installed")
@@ -27,13 +27,14 @@ then
     cp -R $TMP_DIR/local/bin $LOCAL_BIN_DIR
     chmod +x $LOCAL_BIN_DIR/bin/tmux-sessionizer
     chmod +x $LOCAL_BIN_DIR/bin/tmux-session
+    chmod +x $LOCAL_BIN_DIR/bin/re
 
     printf "Installing nvim config...\n"
     mkdir -p $NVIM_CONFIG_DIR
     cp -R $TMP_DIR/config/nvim $NVIM_CONFIG_DIR
 
     printf "Installing tmux config...\n"
-    cp -R $TMP_DIR/tmux.conf $TMUX_CONFIG_DIR
+    cp $TMP_DIR/tmux.conf $TMUX_CONFIG_PATH
 
     printf "Cleaning up temp files...\n"
     rm -rf $TMP_DIR
