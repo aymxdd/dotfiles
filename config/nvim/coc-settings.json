@@ -1,0 +1,7 @@
+{
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.extensionUpdateCheck": "never",
+  "suggest.snippetIndicator": "",
+  "go.goplsPath": "~/go/bin/gopls"
+}

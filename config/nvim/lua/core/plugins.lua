@@ -8,13 +8,13 @@ require("lazy").setup({
     "dracula/vim",
     "nvim-lualine/lualine.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "vim-test/vim-test",
     "lewis6991/gitsigns.nvim",
     "preservim/vimux",
     "christoomey/vim-tmux-navigator",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "stevearc/oil.nvim",
+    "0xDmtri/foundry.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-pack/nvim-spectre",
     -- completion
@@ -23,6 +23,11 @@ require("lazy").setup({
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
+    {
+        "neoclide/coc.nvim",
+        branch = "master",
+        build = "yarn install --frozen-lockfile",
+    },
     -- "github/copilot.vim",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -39,6 +44,23 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-live-grep-args.nvim"
+        }
     },
+    {
+        "ray-x/go.nvim",
+        dependencies = {  -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("go").setup()
+        end,
+        event = {"CmdlineEnter"},
+        ft = {"go", 'gomod'},
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    }
 })

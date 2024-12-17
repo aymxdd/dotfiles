@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "ts_ls" },
+    ensure_installed = { "lua_ls", "ts_ls", "gopls" },
     exclude = { "solargraph" }
 })
 
@@ -31,10 +31,10 @@ require("lspconfig").lua_ls.setup {
 
 require("lspconfig").solargraph.setup({})
 require("lspconfig").ts_ls.setup({})
-require("lspconfig").gopls.setup({})
 require("lspconfig").tailwindcss.setup({})
 require("lspconfig").solidity.setup({})
 require("lspconfig").rust_analyzer.setup({})
+require("lspconfig").gopls.setup({})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

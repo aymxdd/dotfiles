@@ -1,4 +1,8 @@
-require('telescope').setup({ file_ignore_patterns = { "node%_modules/.*" } })
+local telescope = require('telescope')
+
+telescope.setup({ file_ignore_patterns = { "node%_modules/.*", "go.sum" } })
+telescope.load_extension("live_grep_args")
+
 local builtin = require('telescope.builtin')
 local latest = 0
 
@@ -15,7 +19,7 @@ end, {})
 vim.keymap.set('n', '<Space>fg', function ()
     if latest == 0 then
         latest = 1
-        builtin.live_grep()
+        telescope.extensions.live_grep_args.live_grep_args()
     else
         builtin.resume()
     end
